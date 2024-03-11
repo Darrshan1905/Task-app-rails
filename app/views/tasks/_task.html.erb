@@ -1,0 +1,19 @@
+<p>
+    <strong>Task Name: </strong>
+    <%= task.name %>
+</p>
+
+<p>
+    <strong>Task Duartion: </strong>
+    <%= task.duration %>
+</p>
+
+<p>
+    <strong>Task Description: </strong>
+    <%= task.description %>
+</p>    
+
+
+<%= link_to 'Delete Task', [task.project, task], method: :delete, data: {confirm: 'Are you sure you want to delete the task'} %> |
+<!-- <%= link_to 'Edit Task', edit_project_task_path(task.project, task) %>  -->
+<br>

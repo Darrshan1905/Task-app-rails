@@ -1,0 +1,17 @@
+<%= form_with model: [@project, @project.tasks.build], local: true do |form| %>
+    <p>
+        <%= form.label :"Task Name" %><br>
+        <%= form.text_field :name %>
+    </p>
+    <p>
+        <%= form.label :"Task duration" %><br>
+        <%= form.text_field :duration %>
+    </p>
+    <p>
+        <%= form.label :"Task description" %><br>
+        <%= form.text_area :description %>
+    </p>
+    <p>
+        <%= form.submit %>
+    </p>
+<% end %>

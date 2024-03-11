@@ -1,0 +1,35 @@
+<%= form_with model: @project, local: true do |form| %>
+ 
+    <% if @project.errors.any? %>
+        <div id="error_modal">
+        <h3>
+            The following <%= pluralize(@project.errors.count, "error") %> stopped this project from being saved:
+        </h3>
+        <ul>
+            <% @project.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+            <% end %>
+        </ul>
+        </div>
+    <% end %>
+ 
+    <p>
+      <%= form.label :"Project title" %><br>
+      <%= form.text_field :title %>
+    </p>
+
+    <p>
+        <%= form.label :"Project start date" %><br>
+        <%= form.date_field :start_date %>
+    </p>
+
+    <p>
+        <%= form.label :"Project end date" %><br>
+        <%= form.date_field :end_date %>
+    </p>
+
+    <p>
+        <%= form.submit %>
+    </p>
+ 
+<% end %>
