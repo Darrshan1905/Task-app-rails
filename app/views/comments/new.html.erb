@@ -1,6 +1,18 @@
 <div class='container'>
   <h2>Add a comment</h2>
-  <%= form_with scope: :comment, url: project_task_comments_path do |form| %>
+  <%= form_with model: @comment, url: project_task_comments_path, local: true do |form| %>
+    <% if @comment.errors.any? %>
+        <div id="error-modal">
+          <h3>
+              The following <%= pluralize(@comment.errors.count, "error") %> stopped this task from being saved:
+          </h3>
+          <ul>
+              <% @comment.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+              <% end %>
+          </ul>
+        </div>
+    <% end %>
     <p>
       <%= form.label :commenter %><br>
       <%= form.text_field :commenter %>

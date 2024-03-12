@@ -6,7 +6,7 @@ class CommentsController < ApplicationController
     def create
         @project = Project.find(params[:project_id])
         @task = @project.tasks.find(params[:task_id])
-        @comment = @task.comments.build(comment_params)
+        @comment = @task.comments.new(comment_params)
 
         if @comment.save
             redirect_to project_path(@project)

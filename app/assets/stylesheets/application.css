@@ -169,8 +169,7 @@ input[type="submit"]:hover {
 }
 
 hr {
-    border: none;
-    border-top: 1px solid #ccc;
+    border: 1px solid black;
     margin: 20px 0;
 }
   
