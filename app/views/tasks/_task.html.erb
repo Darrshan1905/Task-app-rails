@@ -1,6 +1,6 @@
 <p>
     <strong>Task Name: </strong>
-    <%= task.name %>
+    <%= task.name%>
 </p>
 
 <p>
@@ -13,7 +13,12 @@
     <%= task.description %>
 </p>    
 
-
-<%= link_to 'Delete Task', [task.project, task], method: :delete, data: {confirm: 'Are you sure you want to delete the task'} %> |
-<!-- <%= link_to 'Edit Task', edit_project_task_path(task.project, task) %>  -->
 <br>
+<%= link_to 'Add a comment', new_project_task_comment_path(task.project, task), class:'show' %> <br>
+
+<h3>Comments</h3>
+<%= render task.comments %> <br>
+
+<%= link_to 'Delete Task', [task.project, task], method: :delete, data: {confirm: 'Are you sure you want to delete the task'}, class:'delete' %> |
+<%= link_to 'Edit Task', edit_project_task_path(task.project, task), class:'edit' %>
+<br><br><hr>

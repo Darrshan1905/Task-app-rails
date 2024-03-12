@@ -1,7 +1,7 @@
 <%= form_with model: @project, local: true do |form| %>
  
     <% if @project.errors.any? %>
-        <div id="error_modal">
+        <div id="error-modal">
         <h3>
             The following <%= pluralize(@project.errors.count, "error") %> stopped this project from being saved:
         </h3>

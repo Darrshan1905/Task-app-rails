@@ -1,9 +1,6 @@
-<%= link_to 'Back', project_path(@project), class:'back-link'%>
-
-<div class="container">
-    <h2>Edit task</h2>
-    
-    <%= form_with model: @task, url: project_task_path(@project, @task), method: :patch, local: true do |form| %>
+<div class='container'>
+    <h2>Create new task</h2>
+    <%= form_with scope: @task, url: project_tasks_path, local: true do |form| %>
         <p>
             <%= form.label :"Task Name" %><br>
             <%= form.text_field :name %>
@@ -21,3 +18,5 @@
         </p>
     <% end %>
 </div>
+
+ 
