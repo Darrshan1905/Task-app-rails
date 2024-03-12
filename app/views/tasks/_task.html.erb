@@ -13,6 +13,11 @@
     <%= task.description %>
 </p>    
 
+<p>
+    <strong>Created At: </strong>
+    <%= task.created_at %>
+</p>
+
 <br>
 <%= link_to 'Add a comment', new_project_task_comment_path(task.project, task), class:'show' %> <br>
 
