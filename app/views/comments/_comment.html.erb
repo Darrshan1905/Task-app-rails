@@ -1,16 +1,14 @@
-<p>
-  <strong>Commenter:</strong>
-  <%= comment.commenter %>
-</p>
- 
-<p>
-  <strong>Comment:</strong>
-  <%= comment.body %>
-</p>
+<div class="comment-container">
+  <div class="comment">
+    <p>
+      <%= comment.commenter %>:&nbsp&nbsp<%= comment.body %>
+    </p>
+  </div>
 
-<p>
-  <%= link_to 'Delete Comment', [comment.task.project, comment.task, comment],
-               method: :delete,
-               data: { confirm: 'Are you sure?' },
-               class: 'delete' %>
-</p><br>
+  <div>
+    <%= link_to 'Delete Comment', [comment.task.project, comment.task, comment],
+                method: :delete,
+                data: { confirm: 'Are you sure?' },
+                class: 'right-btn' %>
+  </div>               
+</div>
