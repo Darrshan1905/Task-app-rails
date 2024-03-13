@@ -276,5 +276,27 @@ hr {
   font-size: 1.1rem;
 }
 
+.nav-bar {
+  margin: 10px 0 0 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.project-heading {
+  color: #4db5ff;
+  font-size: 2rem;
+  margin-bottom: 0;
+}
+
+.nav-btn {
+  border: none;
+}
+
+.nav-btn:hover {
+  background: none;
+  color: white;
+}
+
 
   
