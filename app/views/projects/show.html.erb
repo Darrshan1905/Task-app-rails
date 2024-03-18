@@ -2,7 +2,15 @@
     <h1 class="project-heading">Task Management System</h1>
     <div>
         <%= link_to 'Edit project', edit_project_path(@project), class:'nav-btn' %>
+        <%= link_to 'Add a new task', new_project_task_path(@project), class:'nav-btn' %>
         <%= link_to 'Back to all projects page', projects_path, class: 'nav-btn' %>
+        <% if user_signed_in? %>
+            <%= link_to "Profile", edit_user_registration_path, class:'nav-btn' %>
+            <%= link_to "Logout", destroy_user_session_path, method: :delete, class:'nav-btn' %>
+        <% else %>
+            <%= link_to "Login", new_user_session_path, class:'nav-btn' %>
+            <%= link_to "Sign up", new_user_registration_path, class:'nav-btn' %>
+        <% end %>
     </div>
 </nav>
 
@@ -23,10 +31,6 @@
             <strong class='title'>End Date: &nbsp</strong>
             <%= @project.end_date %>
         </p>
-    </div>
-
-    <div class='actions'>
-        <%= link_to 'Add a new task', new_project_task_path(@project), class:'right-btn' %> <br><br>
     </div>
 
     <hr>

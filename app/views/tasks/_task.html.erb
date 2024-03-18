@@ -21,8 +21,10 @@
 <div class="actions">
 <%= link_to 'Add a comment', new_project_task_comment_path(task.project, task), class:'right-btn' %> <br>
 </div>
-<h3 class="name">Comments</h3>
-<%= render task.comments %> <br>
+<div class="comments-container">
+    <h3 class="name">Comments</h3>
+    <%= render task.comments %> <br>
+</div>
 
 <%= link_to 'Delete Task', [task.project, task], method: :delete, data: {confirm: 'Are you sure you want to delete the task'}, class:'back-link' %>
 <%= link_to 'Edit Task', edit_project_task_path(task.project, task), class:'back-link' %>

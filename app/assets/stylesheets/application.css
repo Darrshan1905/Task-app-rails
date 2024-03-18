@@ -46,30 +46,6 @@
   p {
     font-size: 0.95rem;
   }
-
-  /* a.show {
-    background-color: #27ae60;
-  }
-
-  a.show:hover {
-    background-color: #29e979;
-  }
-
-  a.edit {
-    background-color: #FFD700;
-  }
-
-  a.edit:hover {
-    background-color: #fae360;
-  }
-
-  a.delete {
-    background-color: #e72f1b;
-  }
-
-  a.delete:hover {
-    background-color: #e74c3c;
-  }*/
   
   a.back-link {
     margin: 10px;
@@ -100,24 +76,8 @@
     background: #fff;
     color: #1f1f38;
     border-color: transparent;
+    font-size: large;
   }
-
-  
-  /* a {
-    display: inline-block;
-    padding: 8px 16px;
-    margin: 2px;
-    background-color: #3498db;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-  }
-  
-  a:hover {
-    background-color: #0062a3;
-    opacity: 0.8;
-  } */
 
   .container {
     max-width: 600px;
@@ -217,14 +177,6 @@ input[type="submit"]:hover {
   border-color: transparent;
 }
 
-/* .project-details {
-    padding-bottom: 10px;
-} */
-
-/* .actions {
-    margin-top: 10px;
-} */
-
 hr {
     border: 1px solid black;
     margin: 20px 0;
@@ -298,5 +250,41 @@ hr {
   color: white;
 }
 
+.or {
+  font-size: large;
+  font-weight: bolder;
+  color: #fff;
+  display: inline;
+}
+
+.sign-up-option {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.auth-link {
+  border: none;
+}
+
+.auth-link:hover {
+  background: none;
+  color: #fff;
+}
+
+.alert {
+  background: #721c24;
+  color: #fff;
+}
+
+.comments-container {
+  margin: 12px 0;
+  height: 200px;
+  overflow-y: auto;
+  border: 1px solid #4db5ff;
+  padding: 5px;
+  border-radius: 8px;
+}
 
   

@@ -2,14 +2,14 @@
  
     <% if @project.errors.any? %>
         <div id="error-modal">
-        <h3>
-            The following <%= pluralize(@project.errors.count, "error") %> stopped this project from being saved:
-        </h3>
-        <ul>
-            <% @project.errors.full_messages.each do |msg| %>
-            <li><%= msg %></li>
-            <% end %>
-        </ul>
+            <h3>
+                The following <%= pluralize(@project.errors.count, "error") %> stopped this project from being saved:
+            </h3>
+            <ul>
+                <% @project.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+                <% end %>
+            </ul>
         </div>
     <% end %>
  
