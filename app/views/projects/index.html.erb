@@ -11,6 +11,11 @@
         <% end %>
       </div>
 </nav>
+<% if user_signed_in? %>
+    <div class="welcome-msg">
+        <h2 class="welcome-heading">Welcome <span class="welcome-name"><%= current_user.name %></span> !</h2>
+    </div>
+<% end %>
 
 <div class='projects-container'>
     <h2> List of all projects </h2>

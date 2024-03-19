@@ -294,6 +294,20 @@ hr {
   border-radius: 8px;
 }
 
+.welcome-msg {
+  margin-top: 15px;
+  color: #ffffff;
+  margin-left: 10px;
+}
+
+.welcome-heading {
+  text-align: left;
+}
+
+.welcome-name {
+  color: #4db5ff;
+}
+
 
 
   
