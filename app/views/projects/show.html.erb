@@ -3,7 +3,7 @@
     <div>
         <%= link_to 'Back to all projects page', projects_path, class: 'nav-btn' %>
         <% if user_signed_in? %>
-            <% if @project.user == current_user%>
+            <% if @project.user == current_user || current_user.admin?%>
                 <%= link_to 'Edit project', edit_project_path(@project), class:'nav-btn' %>
                 <%= link_to 'Delete project', project_path(@project), method: :delete, data: {confirm: 'Are you sure you want to delete this project'}, class:'nav-btn' %>
                 <%= link_to 'Add a new task', new_project_task_path(@project), class:'nav-btn' %>

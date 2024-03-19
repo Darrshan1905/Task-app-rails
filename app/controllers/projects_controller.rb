@@ -50,7 +50,7 @@ class ProjectsController < ApplicationController
 
     def correct_user
         @project = current_user.projects.find_by(id: params[:id])
-        redirect_to projects_path, alert: "Not authorized to edit or delete this project" if @project.nil?
+        redirect_to projects_path, alert: "Not authorized to edit or delete this project" if @project.nil? && !current_user.admin?
     end
 
     private 

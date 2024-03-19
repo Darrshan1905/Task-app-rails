@@ -28,7 +28,7 @@
     <%= render task.comments %> <br>
 </div>
 
-<% if user_signed_in? && task.user == current_user %>
+<% if user_signed_in? && (task.user == current_user || current_user.admin?)%>
     <%= link_to 'Delete Task', [task.project, task], method: :delete, data: {confirm: 'Are you sure you want to delete the task'}, class:'back-link' %>
     <%= link_to 'Edit Task', edit_project_task_path(task.project, task), class:'back-link' %>
 <% end %>

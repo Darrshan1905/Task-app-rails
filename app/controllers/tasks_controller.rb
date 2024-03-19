@@ -43,7 +43,7 @@ class TasksController < ApplicationController
     def correct_user
         @project = current_user.projects.find_by(id: params[:project_id])
         @current_project = Project.find(params[:project_id])
-        redirect_to project_path(@current_project), alert: "Not authorized to add, edit or delete a task for this project" if @project.nil?
+        redirect_to project_path(@current_project), alert: "Not authorized to add, edit or delete a task for this project" if @project.nil? && !current_user.admin?
     end
 
     private
