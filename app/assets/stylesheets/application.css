@@ -92,11 +92,13 @@
   .projects-container {
     color: #ffffff;
     max-width: 800px;
+    max-height: 800px;
     margin: 100px auto;
     padding: 20px;
     border: 2px solid #4db5ff;
     border-radius: 8px;
     background: transparent;
+    overflow-y: auto;
   }
 
   table {
@@ -278,6 +280,11 @@ hr {
   color: #fff;
 }
 
+.notice {
+  background: #10d42a;
+  color: #fff;
+}
+
 .comments-container {
   margin: 12px 0;
   height: 200px;
@@ -286,5 +293,7 @@ hr {
   padding: 5px;
   border-radius: 8px;
 }
+
+
 
   

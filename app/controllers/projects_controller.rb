@@ -1,12 +1,15 @@
 class ProjectsController < ApplicationController
     before_action :authenticate_user!, except: [:index, :show]
+    before_action :correct_user, only: [:edit, :update, :destroy]
 
     def new
-        @project = Project.new
+        #@project = Project.new
+        @project = current_user.projects.build
     end
 
     def create
-        @project = Project.new(project_params)
+        #@project = Project.new(project_params)
+        @project = current_user.projects.build(project_params)
 
         if @project.save
             redirect_to @project
@@ -45,9 +48,14 @@ class ProjectsController < ApplicationController
         redirect_to projects_path
     end
 
+    def correct_user
+        @project = current_user.projects.find_by(id: params[:id])
+        redirect_to projects_path, alert: "Not authorized to edit or delete this project" if @project.nil?
+    end
+
     private 
 
     def project_params
-        params.require(:project).permit(:title, :start_date, :end_date)
+        params.require(:project).permit(:title, :start_date, :end_date, :user_id)
     end
 end
