@@ -4,29 +4,36 @@
 <div class='container'>
   <h2>Add a comment</h2>
   <%= form_with model: @comment, url: project_task_comments_path, local: true do |form| %>
-    <% if @comment.errors.any? %>
-        <div id="error-modal">
-          <h3>
-              The following <%= pluralize(@comment.errors.count, "error") %> stopped this task from being saved:
-          </h3>
-          <ul>
-              <% @comment.errors.full_messages.each do |msg| %>
-              <li><%= msg %></li>
-              <% end %>
-          </ul>
+    <div class="input-control <%= 'error-input' if @comment.errors[:commenter].any? %>" >
+      <p>
+        <%= form.label :commenter %><br>
+        <%= form.text_field :commenter %>
+      </p>
+      <% if @comment.errors[:commenter].any? %>
+        <div class="error">
+          Commenter <%= @comment.errors[:commenter][0] %>
         </div>
-    <% end %>
-    <p>
-      <%= form.label :commenter %><br>
-      <%= form.text_field :commenter %>
-    </p>
-    <p>
-      <%= form.label :body %><br>
-      <%= form.text_area :body, class:'description' %>
-    </p>
-    <p>
-        <%= form.number_field :user_id, id: :comment_user_id, value: current_user.id, type: :hidden%>
-    </p>
+      <% end %>  
+    </div>
+
+    <div class="input-control <%= 'error-input' if @comment.errors[:body].any? %>">
+      <p>
+        <%= form.label :body %><br>
+        <%= form.text_area :body, class:'description' %>
+        <% if @comment.errors[:body].any? %>
+          <div class="error">
+            Comment body <%= @comment.errors[:body][0] %>
+          </div>
+        <% end %>  
+      </p>
+    </div>
+
+    <div class="input-control">
+      <p>
+          <%= form.number_field :user_id, id: :comment_user_id, value: current_user.id, type: :hidden%>
+      </p>
+    </div>
+
     <p>
       <%= form.submit %>
     </p>

@@ -1,7 +1,7 @@
 <nav class="nav-bar"> 
     <h1 class="project-heading">Task Management System</h1>
     <div>
-        <%= link_to 'Back to all projects page', projects_path, class: 'nav-btn' %>
+        <%= link_to 'Back to projects page', projects_path, class: 'nav-btn' %>
         <% if user_signed_in? %>
             <% if @project.user == current_user || current_user.admin?%>
                 <%= link_to 'Edit project', edit_project_path(@project), class:'nav-btn' %>

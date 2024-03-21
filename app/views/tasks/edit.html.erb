@@ -6,30 +6,37 @@
     <h2>Edit task</h2>
     
     <%= form_with model: @task, url: project_task_path(@project, @task), method: :patch, local: true do |form| %>
-        <% if @task.errors.any? %>
-            <div id="error-modal">
-                <h3>
-                    The following <%= pluralize(@task.errors.count, "error") %> stopped this task from being saved:
-                </h3>
-                <ul>
-                    <% @task.errors.full_messages.each do |msg| %>
-                    <li><%= msg %></li>
-                    <% end %>
-                </ul>
-            </div>
-        <% end %>
-        <p>
-            <%= form.label :"Task Name" %><br>
-            <%= form.text_field :name %>
-        </p>
-        <p>
-            <%= form.label :"Task duration" %><br>
-            <%= form.text_field :duration %>
-        </p>
-        <p>
-            <%= form.label :"Task description" %><br>
-            <%= form.text_area :description, class:'description' %>
-        </p>
+        <div class="input-control <%= 'error-input' if @task.errors[:name].any? %>">
+            <p>
+                <%= form.label :"Task Name" %><br>
+                <%= form.text_field :name %>
+            </p>
+            <% if @task.errors[:name].any? %>
+                <div class="error">
+                    Task Name <%= @task.errors[:name][0] %>
+                </div>
+            <% end %>  
+        </div>
+
+        <div class="input-control <%= 'error-input' if @task.errors[:duration].any? %>">
+            <p>
+                <%= form.label :"Task duration" %><br>
+                <%= form.text_field :duration %>
+            </p>
+            <% if @task.errors[:duration].any? %>
+                <div class="error">
+                    Task Duration <%= @task.errors[:duration][0] %>
+                </div>
+            <% end %>  
+        </div>
+
+        <div class="input-control">
+            <p>
+                <%= form.label :"Task description" %><br>
+                <%= form.text_area :description, class:'description' %>
+            </p>
+        </div>
+        
         <p>
             <%= form.submit %>
         </p>
