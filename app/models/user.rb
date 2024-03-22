@@ -5,7 +5,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   validates :name, presence: true
-  has_many :projects
+  has_many :projects, dependent: :destroy
   has_many :tasks
   has_many :comments
 end
