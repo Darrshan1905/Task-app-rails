@@ -4,29 +4,49 @@
 <div class="container">
   <h2>Sign up</h2> 
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-    <%= render "devise/shared/error_messages", resource: resource %>
+    <!-- <%= render "devise/shared/error_messages", resource: resource %> -->
 
-    <div class="field">
+    <div class="field input-control <%= 'error-input' if resource.errors[:email].any? %>">
       <%= f.label :email %><br />
-      <%= f.email_field :email, autofocus: true, autocomplete: "email" %><br/>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      <% if resource.errors[:email].any? %>
+        <div class="error">
+          Email <%= resource.errors[:email][0] %>
+        </div>
+      <% end %>
     </div>
 
-    <div class="field">
+    <div class="field input-control <%= 'error-input' if resource.errors[:name].any? %>">
       <%= f.label :name %><br />
-      <%= f.text_field :name, autofocus: true %><br/>
+      <%= f.text_field :name, autofocus: true %>
+      <% if resource.errors[:name].any? %>
+        <div class="error">
+          Name <%= resource.errors[:name][0] %>
+        </div>
+      <% end %>
     </div>
 
-    <div class="field">
+    <div class="field input-control <%= 'error-input' if resource.errors[:password].any? %>">
       <%= f.label :password %>
       <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <em>(<%= @minimum_password_length %> characters minimum)</em>
       <% end %><br />
-      <%= f.password_field :password, autocomplete: "new-password" %><br/>
+      <%= f.password_field :password, autocomplete: "new-password" %>
+      <% if resource.errors[:password].any? %>
+        <div class="error">
+          Password <%= resource.errors[:password][0] %>
+        </div>
+      <% end %>
     </div>
 
-    <div class="field">
-      <%= f.label :password_confirmation %><br />
+    <div class="field input-control <%= 'error-input' if resource.errors[:password_confirmation].any? %>">
+      <%= f.label :password_confirmation %>
       <%= f.password_field :password_confirmation, autocomplete: "new-password" %><br/><br/>
+      <% if resource.errors[:password_confirmation].any? %>
+        <div class="error">
+          Password Confirmation <%= resource.errors[:password_confirmation][0] %>
+        </div>
+      <% end %>
     </div>
 
     <div>

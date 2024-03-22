@@ -1,7 +1,7 @@
 <nav class="nav-bar"> 
       <h1 class="project-heading">Task Management System</h1>
       <div>
-        <%= link_to 'Click to create a new project', new_project_path, class:'nav-btn' %>
+        <%= link_to 'Create a new project', new_project_path, class:'nav-btn' %>
         <% if user_signed_in? %>
             <%= link_to "Profile", edit_user_registration_path, class:'nav-btn' %>
             <%= link_to "Logout", destroy_user_session_path, method: :delete, class:'nav-btn' %>
