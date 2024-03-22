@@ -328,6 +328,21 @@ hr {
   color: #4db5ff;
 }
 
+.home-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-edit-submit {
+  margin-top: 20px;
+}
+
+.forgot-pass {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 
   
