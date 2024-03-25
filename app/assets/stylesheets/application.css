@@ -89,11 +89,28 @@
     color: #ffffff;
   }
 
+  .project-details {
+    margin: 24px 0 15px 10px;
+    color: #fff;
+  }
+
   .projects-container {
     color: #ffffff;
     max-width: 800px;
     max-height: 800px;
     margin: 100px auto;
+    padding: 20px;
+    border: 2px solid #4db5ff;
+    border-radius: 8px;
+    background: transparent;
+    overflow-y: auto;
+  }
+
+  .tasks-container {
+    color: #ffffff;
+    max-width: 800px;
+    max-height: 800px;
+    margin: 70px auto;
     padding: 20px;
     border: 2px solid #4db5ff;
     border-radius: 8px;
@@ -174,7 +191,7 @@
 }
 
 input:focus, .description:focus {
-  display: inline-block;
+  /* display: inline-block; */
   border-color: #fff;
   box-shadow: 0 0 0 0.1rem #fff;
 }
@@ -203,18 +220,13 @@ hr {
     border: 1px solid black;
     margin: 20px 0;
 }
-  
-.name {
-    color: black;
-    font-weight: bolder;
-}
 
 .edit-icon {
   color: black !important;
 }
 
 .title {
-  font-size: 1.04rem;
+  font-size: 1.2rem;
 }
 
 hr {
@@ -244,10 +256,11 @@ hr {
 
 .name {
   color: #4db5ff;
+  font-weight: bolder;
 }
 
 .incr {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
 }
 
 .nav-bar {
@@ -343,6 +356,26 @@ hr {
   justify-content: center;
   align-items: center;
 }
+
+.search {
+  width: 40%;
+  margin-left: 10px;
+  position: relative;
+}
+
+.search-btn {
+  position: absolute; 
+  right: 13px; 
+  top: 53%; 
+  transform: translateY(-50%);
+  background-color: transparent; 
+  border: none;
+}
+
+.search-btn:hover {
+  cursor: pointer;
+}
+
 
 
   

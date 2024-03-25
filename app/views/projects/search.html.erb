@@ -19,9 +19,9 @@
 <% end %>
 
 
-<form class="formSearch" role="search" action="/projects/search" method="GET">
+<form class="formSearch" role="search" action="/projects/search">
     <div class="search">
-        <input class="input-control" type="search" name="key" placeholder="Search for projects" style="padding-right: 40px;">
+        <input class="input-control" type="search" name="key" placeholder="Search for a project" style="padding-right: 40px;">
         <button class="search-btn" type="submit">
             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="#4db5ff" class="bi bi-search" viewBox="0 0 16 16">
                 <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
@@ -31,7 +31,7 @@
 </form>
 
 <div class='projects-container'>
-    <h2> List of all projects </h2>
+    <h2> List of projects matching the search query </h2>
 
     <table>
         <tr>

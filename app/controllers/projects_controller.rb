@@ -48,6 +48,15 @@ class ProjectsController < ApplicationController
         redirect_to projects_path
     end
 
+    def search
+        @projects = Project.where("title LIKE ?","%" + params[:key] + "%")
+    end
+
+    def task_search
+        @project = Project.find(params[:project_id])
+        @tasks = @project.tasks.where("name LIKE ?", "%" + params[:key] + "%")
+    end
+
     def correct_user
         @project = current_user.projects.find_by(id: params[:id])
         redirect_to projects_path, alert: "Not authorized to edit or delete this project" if @project.nil? && !current_user.admin?
