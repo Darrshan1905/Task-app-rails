@@ -1,0 +1,29 @@
+<nav class="nav-bar"> 
+      <h1 class="project-heading">Task Management System</h1>
+</nav>
+
+<div class="container">
+  <h2>Login</h2> 
+    <%= form_with(url: login_path, method: :post, local: true) do |form| %>
+        <%= form.label :email %>
+        <%= form.email_field :email, autofocus: true, autocomplete: "email"%>
+
+        <br/><br/>
+    
+        <%= form.label :password %>
+        <%= form.password_field :password %>
+
+        <br/><br/>
+        <%= form.submit "Submit"%>
+
+        <br/><br/>
+
+        <div class='sign-up-option'>
+          <p class='or'> Don't have an account? <p>
+          <%= link_to "Sign up", signup_path, class:'auth-link' %><br />
+        </div>
+    <% end %>
+
+    
+</div>
+

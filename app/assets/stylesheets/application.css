@@ -90,7 +90,7 @@
   }
 
   .project-details {
-    margin: 24px 0 15px 10px;
+    margin: 28px 0 15px 10px;
     color: #fff;
   }
 
@@ -359,6 +359,7 @@ hr {
 
 .search {
   width: 40%;
+  margin-top: 35px;
   margin-left: 10px;
   position: relative;
 }
@@ -375,6 +376,7 @@ hr {
 .search-btn:hover {
   cursor: pointer;
 }
+
 
 
 

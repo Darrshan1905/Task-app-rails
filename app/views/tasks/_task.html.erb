@@ -18,17 +18,19 @@
     <%= task.created_at %>
 </p>
 
-<% if user_signed_in?%>
+
+<% if current_user %>
     <div class="actions">
     <%= link_to 'Add a comment', new_project_task_comment_path(task.project, task), class:'right-btn' %> <br>
     </div>
 <% end %>
+
 <div class="comments-container">
     <h3 class="name">Comments</h3>
     <%= render task.comments %> <br>
 </div>
 
-<% if user_signed_in? && (task.user == current_user || current_user.admin?)%>
+<% if current_user && (task.user == current_user || current_user.admin?)%>
     <%= link_to 'Delete Task', [task.project, task], method: :delete, data: {confirm: 'Are you sure you want to delete the task'}, class:'back-link' %>
     <%= link_to 'Edit Task', edit_project_task_path(task.project, task), class:'back-link' %>
 <% end %>

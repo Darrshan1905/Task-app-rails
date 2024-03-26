@@ -7,7 +7,7 @@
     <div class="input-control <%= 'error-input' if @comment.errors[:commenter].any? %>" >
       <p>
         <%= form.label :commenter %><br>
-        <%= form.text_field :commenter,   value: current_user.name, readonly: true %>
+        <%= form.text_field :commenter , value: current_user.name, readonly: true%>
       </p>
       <% if @comment.errors[:commenter].any? %>
         <div class="error">
@@ -28,11 +28,9 @@
       </p>
     </div>
 
-    <div class="input-control">
-      <p>
-          <%= form.number_field :user_id, id: :comment_user_id, value: current_user.id, type: :hidden%>
-      </p>
-    </div>
+    <p>
+      <%= form.number_field :user_id, id: :comment_user_id, value: current_user.id, type: :hidden%>
+    </p>
 
     <p>
       <%= form.submit %>

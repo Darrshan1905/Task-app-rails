@@ -1,0 +1,60 @@
+<nav class="nav-bar"> 
+      <h1 class="project-heading">Task Management System</h1>
+</nav>
+
+<div class="container">
+  <h2>Sign up</h2> 
+    <%= form_with(model: @user, url: signup_path, method: :post, local: true) do |form| %>
+        <div class="input-control <%= 'error-input' if @user.errors[:email].any? %>" >
+            <%= form.label :email %>
+            <%= form.email_field :email, autofocus: true, autocomplete: "email"%>
+            <% if @user.errors[:email].any? %>
+                <div class="error">
+                 Email <%= @user.errors[:email][0] %>
+                </div>
+            <% end %>
+        </div>
+
+        <div class="input-control <%= 'error-input' if @user.errors[:name].any? %>" >
+            <%= form.label :name %>
+            <%= form.text_field :name%>
+            <% if @user.errors[:name].any? %>
+                <div class="error">
+                    Name <%= @user.errors[:name][0] %>
+                </div>
+            <% end %>
+        </div>
+
+        <div class="input-control <%= 'error-input' if @user.errors[:password].any? %>" >
+            <%= form.label :password %>
+            <%= form.password_field :password %>
+            <% if @user.errors[:password].any? %>
+                <div class="error">
+                    Password <%= @user.errors[:password][0] %>
+                </div>
+            <% end %>
+        </div>
+
+        <div class="input-control <%= 'error-input' if @user.errors[:password_confirmation].any? %>" >
+            <%= form.label :password_confirmation %>
+            <%= form.password_field :password_confirmation %> 
+            <% if @user.errors[:password_confirmation].any? %>
+                <div class="error">
+                Password Confirmation <%= @user.errors[:password_confirmation][0] %>
+                </div>
+            <% end %>
+            <br/><br/>
+        </div>
+
+        <%= form.submit %>
+
+        <br/><br/>
+
+        <div class='sign-up-option'>
+            <p class='or'> Already have an account? <p>
+            <%= link_to "Log in", login_path, class:'auth-link' %><br />
+        </div>
+    <% end %>
+
+    
+</div>

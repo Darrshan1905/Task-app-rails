@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-    before_action :authenticate_user!
+    # before_action :authenticate_user!
     before_action :correct_user, only: [:new, :create, :destroy, :edit, :update]
     
     def new
@@ -41,9 +41,13 @@ class TasksController < ApplicationController
     end
 
     def correct_user
-        @project = current_user.projects.find_by(id: params[:project_id])
-        @current_project = Project.find(params[:project_id])
-        redirect_to project_path(@current_project), alert: "Not authorized to add, edit or delete a task for this project" if @project.nil? && !current_user.admin?
+        if current_user
+            @project = current_user.projects.find_by(id: params[:project_id])
+            @current_project = Project.find(params[:project_id])
+            redirect_to project_path(@current_project), alert: "Not authorized to add, edit or delete a task for this project" if @project.nil? && !current_user.admin?
+        else
+            authenticate
+        end
     end
 
     private
