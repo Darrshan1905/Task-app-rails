@@ -2,12 +2,16 @@
     <h1 class="project-heading">Task Management System</h1>
     <div>
         <%= link_to 'Back to projects page', projects_path, class: 'nav-btn' %>
-        
+        <% if current_user %>
+            <% if @project.user == current_user || current_user.admin?%>
                 <%= link_to 'Edit project', edit_project_path(@project), class:'nav-btn' %>
                 <%= link_to 'Delete project', project_path(@project), method: :delete, data: {confirm: 'Are you sure you want to delete this project'}, class:'nav-btn' %>
                 <%= link_to 'Add a new task', new_project_task_path(@project), class:'nav-btn' %>
-            
-    
+            <% end %>
+        <% else %>
+            <%= link_to "Sign up", signup_path, class: 'nav-btn' %>
+            <%= link_to "Login", login_path, class: 'nav-btn' %>
+        <% end %>
     </div>
 </nav>
 
@@ -43,9 +47,15 @@
     </div>
 </form>
 
-<div class='tasks-container'>
-    <h2> Tasks related to the project matching the search query </h2>
-    <%= render @tasks %>
-    <br>
-</div>
+<% if @tasks.any? %>
+    <div class='tasks-container'>
+        <h2> Tasks related to the project matching the search query</h2>
+        <%= render @project.tasks %>
+        <br>
+    </div>        
+<% else %>
+    <div class='tasks-container no-task'>
+        <h2>No tasks match the search query</h2>
+    </div>
+<% end %>
 

@@ -2,14 +2,53 @@
       <h1 class="project-heading">Task Management System</h1>
       <div>
         <%= link_to 'Back to projects page', projects_path , class:'nav-btn'%>
-        
       </div>
 </nav>
 
 <div class='container'>
     <h2>Create New project</h2>
 
-    <%= render 'form' %>
+    <%= form_with model: @project, local: true, id: 'form' do |form|%>
+      <div class="input-control <%= 'error-input' if @project.errors[:title].any? %>">
+        <%= form.label :"Project title" %><br>
+        <%= form.text_field :title, id: 'project_title' %>
+        <% if @project.errors[:title].any? %>
+          <div class="error">
+              Project Title <%= @project.errors[:title][0] %>
+          </div>
+        <% end %>  
+      </div>
+  
+      <div class="input-control <%= 'error-input' if @project.errors[:start_date].any? %>">
+          <%= form.label :"Project start date" %><br>
+          <%= form.date_field :start_date, id: 'project_start_date' %>
+          <% if @project.errors[:start_date].any? %>
+              <div class="error">
+                  Project Start Date <%= @project.errors[:start_date][0] %>
+              </div>
+          <% end %>
+      </div>
+  
+      <div class="input-control <%= 'error-input' if @project.errors[:end_date].any? %>">
+          <%= form.label :"Project end date" %><br>
+          <%= form.date_field :end_date, id: 'project_end_date' %>
+          <% if @project.errors[:end_date].any? %>
+              <div class="error">
+                  Project End Date <%= @project.errors[:end_date][0] %>
+              </div>
+          <% end %>
+      </div>
+  
+      <p>
+          <%= form.number_field :user_id, id: :project_user_id, value: current_user.id, type: :hidden%>
+      </p>
+      
+      <p>
+          <%= form.submit id: 'project_submit_btn' %>
+      </p>
+   
+  <% end %>
+  
 </div>
 
 

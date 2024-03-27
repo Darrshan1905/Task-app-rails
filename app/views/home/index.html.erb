@@ -2,6 +2,7 @@
       <h1 class="project-heading">Task Management System</h1>
       <div>
         <% if current_user %>
+          <%= link_to 'Profile', profile_path, class: 'nav-btn' %>
           <%= link_to "Logout", logout_path , method: :delete, class: 'nav-btn' %>
         <% else %>
           <%= link_to "Sign up", signup_path, class: 'nav-btn' %>

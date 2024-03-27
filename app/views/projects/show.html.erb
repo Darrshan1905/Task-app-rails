@@ -49,9 +49,17 @@
     </div>
 </form>
 
-<div class='tasks-container'>
-    <h2> Tasks related to the project </h2>
-    <%= render @project.tasks %>
-    <br>
-</div>
+<% if @project.tasks.any? %>
+    <div class='tasks-container'>
+        <h2> Tasks related to the project </h2>
+        <%= render @project.tasks %>
+        <br>
+    </div>        
+<% else %>
+    <div class='tasks-container no-task'>
+        <h2>No tasks yet!</h2>
+    </div>
+<% end %>
+
+
 
