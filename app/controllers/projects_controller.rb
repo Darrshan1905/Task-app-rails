@@ -1,22 +1,23 @@
 class ProjectsController < ApplicationController
-    # before_action :authenticate_user!, except: [:index, :show]
     before_action :authenticate, only: [:new, :create]
     before_action :correct_user, only: [:edit, :update, :destroy]
 
     def new
-        # @project = Project.new
+        #@project = Project.new
         @project = current_user.projects.build
     end
 
     def create
         # @project = Project.new(project_params)
-        @project = current_user.projects.build(project_params)
+        # @project = current_user.projects.build(project_params)
+
+        @project = project_service.create_project(project_params)
 
         if @project.save
             redirect_to @project
         else
             render 'new'
-        end
+        end   
     end
 
     def index
@@ -34,7 +35,13 @@ class ProjectsController < ApplicationController
     def update
         @project = Project.find(params[:id])
 
-        if @project.update(project_params)
+        # if @project.update(project_params)
+        #     redirect_to @project
+        # else
+        #     render 'edit'
+        # end
+
+        if project_service.update_project(@project, project_params)
             redirect_to @project
         else
             render 'edit'
@@ -44,7 +51,9 @@ class ProjectsController < ApplicationController
     def destroy
         @project = Project.find(params[:id])
 
-        @project.destroy
+        # @project.destroy
+
+        project_service.delete_project(@project)
 
         redirect_to projects_path
     end
@@ -68,6 +77,10 @@ class ProjectsController < ApplicationController
     end
 
     private 
+
+    def project_service
+        @project_service ||= ProjectService.new(current_user)
+    end
 
     def project_params
         params.require(:project).permit(:title, :start_date, :end_date, :user_id)
