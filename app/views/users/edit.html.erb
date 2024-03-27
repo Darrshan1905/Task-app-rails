@@ -1,0 +1,65 @@
+<nav class="nav-bar"> 
+      <h1 class="project-heading">Task Management System</h1>
+      <%= link_to 'Back to all projects page', projects_path, class: 'nav-btn' %>
+</nav>
+
+<div class="container">
+  <h2>Edit Profile</h2>
+
+  <%= form_for(@user, url: profile_path, method: :patch, local: true) do |f| %>
+
+    <div class="field input-control  <%= 'error-input' if @user.errors[:email].any? %>">
+      <%= f.label :email %><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: "email" %><br/></br>
+      <% if @user.errors[:email].any? %>
+        <div class="error">
+          Email <%= @user.errors[:email][0] %>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="field input-control <%= 'error-input' if @user.errors[:name].any? %>">
+      <%= f.label :name %><br />
+      <%= f.text_field :name, autofocus: true %><br/></br>
+      <% if @user.errors[:name].any? %>
+        <div class="error">
+          Name <%= @user.errors[:name][0] %>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="field input-control <%= 'error-input' if @user.errors[:password].any? %>">
+      <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br/>
+      <%= f.password_field :password, autocomplete: "new-password" %>
+      <% if @user.errors[:password].any? %>
+        <div class="error">
+          Password <%= @user.errors[:password][0] %>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="field input-control <%= 'error-input' if @user.errors[:password_confirmation].any? %>">
+      <%= f.label :password_confirmation %><br />
+      <%= f.password_field :password_confirmation, autocomplete: "new-password" %><br/></br>
+      <% if @user.errors[:password_confirmation].any? %>
+        <div class="error">
+            Password Confirmation <%= @user.errors[:password_confirmation][0] %>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="profile-edit-submit">
+      <%= f.submit "Update" %>
+    </div>
+  <% end %>
+
+  <hr>
+
+  <h3 style="text-align: center">Cancel my account</h3>
+
+  <div class="sign-up-option">
+    <p class="or">Unhappy? </p>
+    <%= link_to "Cancel my account", profile_path, data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete, class:'auth-link' %>
+  </div>
+
+</div>

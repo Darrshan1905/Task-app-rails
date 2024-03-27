@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :authenticate, only: [:edit, :update, :destroy]
+
   def new
     @user = User.new
   end
@@ -12,6 +14,28 @@ class UsersController < ApplicationController
     else
       render 'new'
     end
+  end
+
+  def edit
+    @user = current_user
+  end
+
+  def update
+    puts "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    puts params
+    @user = current_user
+
+    if @user.update(user_params)
+        redirect_to projects_path
+    else
+        render 'edit'
+    end
+  end
+
+  def destroy
+    current_user.destroy
+    session[:user_id] = nil
+    redirect_to logout_path, notice: 'Account deleted successfully.'
   end
 
   private
